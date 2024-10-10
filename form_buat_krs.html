@@ -1,29 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Tambah KRS</title>
 </head>
 <body>
     <form action="create_krs.php" method="post">
-        <label for="name">Nama Mahasiswa: </label><br>
-        <input type="text" name="name"><br>
-        <label for="nim">Nomor Induk Mahasiswa: </label><br>
-        <input type="text" name="nim"><br>
-        <label for="kelas">Kelas: </label><br>
-        <input type="radio" name="kelas" value="5A">Kelas 5A<br>
-        <input type="radio" name="kelas" value="5B">Kelas 5B<br>
-        <input type="radio" name="kelas" value="5C">Kelas 5C<br>
-        <input type="radio" name="kelas" value="5D">Kelas 5D<br>
-        <input type="radio" name="kelas" value="5E">Kelas 5E<br>
-        <label for="makul">Mata Kuliah Pilihan: </label><br>
+        <label for="name">Nama Mahasiswa:</label>
+        <input type="text" name="name" required><br>
+
+        <label for="nim">Nomor Induk Mahasiswa:</label>
+        <input type="text" name="nim" required><br>
+
+        <label for="kelas">Kelas:</label>
+        <select name="kelas" required>
+            <option value="5A">Kelas 5A</option>
+            <option value="5B">Kelas 5B</option>
+            <option value="5C">Kelas 5C</option>
+            <option value="5D">Kelas 5D</option>
+            <option value="5E">Kelas 5E</option>
+        </select><br>
+
+        <label for="makul">Mata Kuliah Pilihan:</label><br>
         <input type="checkbox" name="makul[]" value="WebApp">Web Application Development<br>
         <input type="checkbox" name="makul[]" value="MobileApp">Mobile Application Development<br>
         <input type="checkbox" name="makul[]" value="UI/UX">UI/UX Design<br>
         <input type="checkbox" name="makul[]" value="SoftEng">Software Engineering<br>
         <input type="checkbox" name="makul[]" value="DataEng">Data Engineering<br><br>
+
         <input type="submit" value="Simpan KRS">
     </form>
+    <h2>Data KRS</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nama</th>
+                <th>NIM</th>
+                <th>Kelas</th>
+                <th>Mata Kuliah</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            // Panggil fungsi untuk menampilkan data
+            readData();
+            ?>
+        </tbody>
+    </table>
+
+    <script>
+        function validateForm() {
+            // Implement your validation logic here
+            return true; // Return true if valid, false if invalid
+        }
+    </script>
 </body>
 </html>
